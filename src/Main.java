@@ -37,6 +37,43 @@ class Bill {
         this.phoneNumber = phoneNumber;
     }
 
+    void addItems(String item, int quantity){
+        items.add(new Item(item, quantity));
+    }
+
+    void generateBills(){
+        Date now = new Date();
+        double total = 0;
+        System.out.println("------------- Bills ------------------");
+        System.out.println("date: "+date);
+        System.out.println("Customer name: "+name);
+        System.out.println("Customer phone: "+phoneNumber);
+
+        System.out.println("------- Items -------");
+        for(Item item: items) {
+            if(item.item=="tea"){
+                total+=menu.tea*item.quantity;
+                System.out.println("Tea: "+menu.tea+"*"+item.quantity+"="+(menu.tea*item.quantity));
+            } else if (item.item=="coffee") {
+                total+=menu.coffee*item.quantity;
+                System.out.println("Coffee: "+menu.coffee+"*"+item.quantity+"="+(menu.coffee*item.quantity));
+            }else if (item.item=="snacks") {
+                total+=menu.snacks*item.quantity;
+                System.out.println("Snacks: "+menu.snacks+"*"+item.quantity+"="+(menu.snacks*item.quantity));
+            }
+            else if (item.item=="idli") {
+                total+=menu.idli*item.quantity;
+                System.out.println("Idli: "+menu.idli+"*"+item.quantity+"="+(menu.idli*item.quantity));
+            }
+            else if (item.item=="dosha") {
+                total+=menu.dosa*item.quantity;
+                System.out.println("Dosha: "+menu.dosa+"*"+item.quantity+"="+(menu.dosa*item.quantity));
+            }
+        }
+        totalAmount = total;
+        System.out.println("Total Amount: "+totalAmount);
+    }
+}
 
 
 public class Main {
@@ -63,10 +100,10 @@ public class Main {
                 String name  = sc.next();
                 System.out.print("\nPlease enter phone number: ");
                 long phone  = sc.nextLong();
-                bill = new Bill(name,phone);
+
                 newCustomer = false;
             }
-            System.out.println("Orders");
+            System.out.println("Menu");
             System.out.println("1. Tea - Rs.10");
             System.out.println("2. Coffee - Rs.15");
             System.out.println("3. Snacks - Rs.10");
@@ -76,7 +113,7 @@ public class Main {
             System.out.println("7. View all transactions");
             System.out.println("8. Exit");
 
-            System.out.print("\nPlease enter your choice: ");
+            System.out.print("Please enter your choice: ");
             int option  = sc.nextInt();
 
             switch (option){
@@ -84,6 +121,7 @@ public class Main {
                     System.out.print("Enter quantity: ");
                     bill.addItems("tea", sc.nextInt());
                     break;
+
                 case 2:
                     System.out.print("Enter quantity: ");
                     bill.addItems("coffee", sc.nextInt());
