@@ -17,7 +17,7 @@ class Bills
     String dt;
     String name;
     int phnno;
-    ArrayList<String> items = new ArrayList<String>();
+    ArrayList<String> things = new ArrayList<String>();
     double totalAmount;
 
     public Bills(String name, int phnno)
@@ -25,6 +25,15 @@ class Bills
         this.name = name;
         this.phnno = phnno;
     }
+
+    void addItems(String item)
+            {
+        things.add(item);
+
+    }
+
+
+
 }
 public class biiling
 {
